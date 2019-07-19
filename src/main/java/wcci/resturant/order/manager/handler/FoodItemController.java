@@ -14,11 +14,11 @@ public class FoodItemController {
 	private FoodItemRepository foodItemRepo;
 	
 	@GetMapping("/fooditems")
-	public Iterable<FoodItem> sendFoodItems(){
+	public Iterable<Pizza> sendFoodItems(){
 		return foodItemRepo.findAll();	
 	}
 	@GetMapping("/fooditems/{id}")
-	public FoodItem sendFoodItem(@PathVariable Long id) {
+	public Pizza sendFoodItem(@PathVariable Long id) {
 		return foodItemRepo.findById(id).get();
 	}
 	

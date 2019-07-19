@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 
 
 @Entity
-public class FoodItem {
+public class Pizza {
 	
 	@Id
 	@GeneratedValue
@@ -24,12 +24,15 @@ public class FoodItem {
 	@ManyToOne
 	private Order order;
 	private String comments;
+	private String  crust;
+	private String  sauce;
 	
-
-	public FoodItem(String itemName, String comments, Order order) {
+	public Pizza(String itemName, String comments,String sauce, String crust, Order order) {
 		this.itemName = itemName;
 		this.comments = comments;
 		this.order=order;
+		this.crust=crust;
+		this.sauce=sauce;
 		this.ingrediants  = new ArrayList<>();
 		
 	
@@ -50,9 +53,6 @@ public class FoodItem {
 		return order;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
 
 	public Long getId() {
 		return id;
@@ -63,5 +63,12 @@ public class FoodItem {
 }
 	public void addOrder(Order order) {
 		this.order=order;
+	}
+	public String getCrust() {
+		return crust;
+	}
+
+	public String getSauce() {
+		return sauce;
 	}
 }

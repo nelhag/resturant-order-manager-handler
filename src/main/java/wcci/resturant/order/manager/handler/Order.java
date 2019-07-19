@@ -8,7 +8,7 @@ import javax.persistence.OneToMany;
 public class Order {
 	
 	@OneToMany(mappedBy = "order")
-	private Collection<FoodItem> foodItems;
+	private Collection<Pizza> foodItems;
 	
 	private String name;
 	private boolean paymentMethod;
@@ -26,7 +26,7 @@ public class Order {
 		
 	}
 	
-		public Collection<FoodItem> getFoodItems() {
+		public Collection<Pizza> getFoodItems() {
 			return foodItems;
 		}
 		
@@ -44,7 +44,7 @@ public class Order {
 		public String getOrderTime() {
 			return orderTime;
 		}
-		public void addFoodItem(FoodItem foodItem) {
+		public void addFoodItem(Pizza foodItem) {
 			this.foodItems.add(foodItem);
 		}
 	

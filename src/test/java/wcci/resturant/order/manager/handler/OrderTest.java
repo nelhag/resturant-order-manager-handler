@@ -7,12 +7,12 @@ public class OrderTest {
 	
 	@Before
 	public void setup() {
-		FoodItem foodItem = new FoodItem("taco", "taco stuff", "add extra shell");
+		Order order = new Order("John",true,"3:00");
+	    Pizza foodItem = new Pizza("taco", "", order);
 	}
 	
 	@Test
 	public void ordersShouldHaveAttributes() {
-		Order order = new Order("John",true,"3:00");
 //		we were thinking of adding address in a child class 
 		
 	}

@@ -30,12 +30,12 @@ public class FoodItemControllerWebLayerTest {
 	@MockBean
 	FoodItemRepository foodItemRepo;
 	
-	private FoodItem testFoodItem;
+	private Pizza testFoodItem;
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	@Before
 	public void setup() {
-		testFoodItem =  new FoodItem("ItemName","Ingredeints");
+		testFoodItem =  new Pizza("ItemName","Ingredeints");
 	}
 	
 	@Test
