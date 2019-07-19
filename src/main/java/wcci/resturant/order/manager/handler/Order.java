@@ -1,12 +1,13 @@
 package wcci.resturant.order.manager.handler;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.OneToMany;
 
 public class Order {
 	
-	@OneToMany
+	@OneToMany(mappedBy = "order")
 	private Collection<FoodItem> foodItems;
 	
 	private String name;
@@ -19,10 +20,12 @@ public class Order {
 		this.name = name;
 		this.paymentMethod = true;
 		this.orderTime = orderTime;
+		this.foodItems=new ArrayList<>();
 //		we were thinking of adding address in a child class 
 //		false on payment method means they pay in hard currency
 		
 	}
+	
 		public Collection<FoodItem> getFoodItems() {
 			return foodItems;
 		}
@@ -40,6 +43,9 @@ public class Order {
 		
 		public String getOrderTime() {
 			return orderTime;
+		}
+		public void addFoodItem(FoodItem foodItem) {
+			this.foodItems.add(foodItem);
 		}
 	
 

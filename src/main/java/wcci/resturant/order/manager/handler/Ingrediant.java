@@ -1,15 +1,32 @@
 package wcci.resturant.order.manager.handler;
 
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 public class Ingrediant {
-
-	private String type;
-
-	public Ingrediant(String type) {
+	@Id
+	@GeneratedValue
+    private Long id;
+	@ManyToMany(mappedBy="ingrediants")
+	private Collection <FoodItem> fooditems;
+    private String ingrediantName;
+    private Type type;
+	public static enum Type {
+		WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
+		}
+	public Ingrediant(String ingrediantName,Type type,FoodItem foodItem) {
+		this.ingrediantName=ingrediantName;
+		this.fooditems=new ArrayList<>();
 		this.type = type;
 		
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 

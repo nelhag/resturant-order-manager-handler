@@ -35,7 +35,7 @@ public class FoodItemControllerWebLayerTest {
 	
 	@Before
 	public void setup() {
-		testFoodItem =  new FoodItem("FoodType","Ingredeints","adsditional comment");
+		testFoodItem =  new FoodItem("ItemName","Ingredeints");
 	}
 	
 	@Test
