@@ -1,6 +1,4 @@
 package wcci.resturant.order.manager.handler;
-
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -13,21 +11,27 @@ public class Ingrediant {
 	@GeneratedValue
     private Long id;
 	@ManyToMany(mappedBy="ingrediants")
-	private Collection <FoodItem> fooditems;
+	private Collection <Pizza> fooditems;
     private String ingrediantName;
-    private Type type;
-	public static enum Type {
-		WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
-		}
-	public Ingrediant(String ingrediantName,Type type,FoodItem foodItem) {
+    	private String toppingType;
+	public Ingrediant(String ingrediantName,String toppingType,Pizza foodItem) {
 		this.ingrediantName=ingrediantName;
 		this.fooditems=new ArrayList<>();
-		this.type = type;
+		this.toppingType = toppingType;
 		
 	}
-
-	public Type getType() {
-		return type;
+	public Long getId() {
+		return id;
 	}
+	public Collection<Pizza> getFooditems() {
+		return fooditems;
+	}
+	public String getIngrediantName() {
+		return ingrediantName;
+	}
+	public String getToppingType() {
+		return toppingType;
+	}
+
 
 }
