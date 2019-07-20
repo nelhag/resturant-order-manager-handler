@@ -8,9 +8,8 @@ public class IngrediantsTest {
 	@Test
 	public void ingrediantsShouldHaveType() {
 		Pizza upizzaTest=new Pizza(null, null, null, null, null);
-		Ingrediant ingrediant = new Ingrediant("Brocli",  "Veggie","" );
-		
-		
+		Ingrediant ingrediant = new Ingrediant("Brocli", "Veggie",upizzaTest);
+			
 	}
 
 }
