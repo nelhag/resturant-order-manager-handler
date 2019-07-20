@@ -8,7 +8,7 @@ public class OrderTest {
 	@Before
 	public void setup() {
 		Order order = new Order("John",true,"3:00");
-	    Pizza foodItem = new Pizza("taco", "", order);
+	    Pizza pizza = new Pizza("taco", "Cut down the middle", "Spicy", "thin", order);
 	}
 	
 	@Test

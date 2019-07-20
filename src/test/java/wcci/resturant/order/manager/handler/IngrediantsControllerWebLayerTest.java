@@ -20,46 +20,44 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebMvcTest(FoodItemController.class)
+@WebMvcTest(IngrediantsController.class)
 @RunWith(SpringRunner.class)
-public class FoodItemControllerWebLayerTest {
+public class IngrediantsControllerWebLayerTest {
 
 	@Autowired
 	MockMvc mockMvc;
 	
 	@MockBean
-	FoodItemRepository foodItemRepo;
+	IngrediantRepository ingrediantRepo;
 	
-	private Pizza testFoodItem;
+	private Ingrediant testTopping;
+	private Pizza testPizza;
 	private ObjectMapper mapper = new ObjectMapper();
-	
+
 	@Before
 	public void setup() {
-		testFoodItem =  new Pizza("ItemName","Ingredeints");
+		testPizza = new Pizza("ItemName","Ingredeints", null, null, null);
+		testTopping = new Ingrediant("olive", null, testPizza);
 	}
 	
 	@Test
-	public void fetchCollectionOfFoodItems() throws Exception{
-	when(foodItemRepo.findAll()).thenReturn(Collections.singletonList(testFoodItem));
-	mockMvc.perform(get("/api/fooditems"))
-	.andDo(print())
-	.andExpect(status().isOk())
-	.andExpect(content().contentType("application/json;charset=UTF-8"))
-	.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(testFoodItem)),true));	
+	public void fetchCollectionOfIngrediants() throws Exception{
+		when(ingrediantRepo.findAll()).thenReturn(Collections.singletonList(testTopping));
+		mockMvc.perform(get("/api/ingrediants"))
+		.andDo(print())
+		.andExpect(status().isOk())
+		.andExpect(content().contentType("application/json;charset=UTF-8"))
+		.andExpect(content().json(mapper.writeValueAsString(Collections.singletonList(testTopping)),true));
 	}
 	@Test
-	public void fetchSingleFoodItems() throws Exception{
-	when(foodItemRepo.findById(1L)).thenReturn(Optional.of(testFoodItem));
-	mockMvc.perform(get("/api/fooditems/1"))
-	.andDo(print())
-	.andExpect(status().isOk())
-	.andExpect(content().contentType("application/json;charset=UTF-8"))
-	.andExpect(content().json(mapper.writeValueAsString(testFoodItem),true));	
+	public void fetchSingleIngrediant() throws Exception{
+		when(ingrediantRepo.findById(1L)).thenReturn(Optional.of(testTopping));
+		mockMvc.perform(get("/api/ingrediants/1"))
+		.andDo(print())
+		.andExpect(status().isOk())
+		.andExpect(content().contentType("application/json;charset=UTF-8"))
+		.andExpect(content().json(mapper.writeValueAsString(testTopping),true));
 	}
-	
-	
-	
-	
 	
 	
 }
