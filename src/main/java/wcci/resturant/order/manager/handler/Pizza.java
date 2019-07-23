@@ -21,8 +21,10 @@ public class Pizza {
 	private String itemName;
 	@ManyToMany
 	private Collection<Ingrediant> ingrediants;
+	
 	@ManyToOne
 	private Order order;
+	
 	private String comments;
 	private String  crust;
 	private String  sauce;
