@@ -25,6 +25,7 @@ public class Order {
 //		false on payment method means they pay in hard currency
 		
 	}
+	public Order () {}
 	
 		public Collection<Pizza> getFoodItems() {
 			return foodItems;
