@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,12 +25,10 @@ public class OrderController {
 		return orderRepo.findById(id).get();	
 	}
 	@PostMapping("/place-order")
-	public Order placeOrder(String name, Boolean paymentMethod, String orderTime) {
-		Order orderToPlace = new Order(name, paymentMethod, orderTime);
-		if(orderRepo.findByOrderByName(orderToPlace.getName())==null) {
-		orderRepo.save(orderToPlace);
-		}
-		return orderRepo.findByOrderByName(orderToPlace.getName());
+	public Order placeOrder(@RequestBody Order order) {
+//		might make a funtion to double check that the data is valid before saving
+		
+		return orderRepo.save(order);
 	}
 	
 }

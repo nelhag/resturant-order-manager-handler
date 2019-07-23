@@ -1,6 +1,7 @@
 package wcci.resturant.order.manager.handler;
 
 import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -66,10 +67,14 @@ public class OrderControllerWebLayerTest {
 	
 	@Test
 	public void placeNewOrder() throws Exception {
-		when(orderRepo.save(testOrder2)).thenReturn(testOrder2);
-//		mockMvc.perform(post("/api/place-order").content("Ted")).andExpect(status().isOk());
-//		using .content vs .contentType
- 		mockMvc.perform(post("/api/place-order").contentType(MediaType.APPLICATION_JSON).content(toJson(testOrder2))).andExpect(status().isOk());
+		when(orderRepo.save(any(Order.class))).thenReturn(testOrder2);
+
+ 		mockMvc.perform(post("/api/place-order")
+ 				.contentType(MediaType.APPLICATION_JSON)
+ 				.characterEncoding("utf-8")
+ 				.content(mapper.writeValueAsString(testOrder2)))
+ 				.andExpect(status().isOk());
+
 	}
 
 	private String toJson(Order order) {
