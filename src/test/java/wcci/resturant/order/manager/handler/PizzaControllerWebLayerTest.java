@@ -31,12 +31,12 @@ public class PizzaControllerWebLayerTest {
 	PizzaRepository pizzaRepo;
 	
 	private Pizza testPizza;
-	private Order testOrder;
+	private PizzaOrder testOrder;
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	@Before
 	public void setup() {
-		testOrder = new Order("John", false, "4:00");
+		testOrder = new PizzaOrder("John", false, "4:00");
 		testPizza =  new Pizza("ItemName","Ingredeints", null, null, null);
 	}
 	

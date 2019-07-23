@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class OrderController {
+public class PizzaOrderController {
 
 	@Autowired
-	private OrderRepository orderRepo;
+	private PizzaOrderRepository pizzaOrderRepo;
 	
 	@GetMapping("/orders")
-	public Iterable<Order> sendOrders(){
-		return orderRepo.findAll();
+	public Iterable<PizzaOrder> sendOrders(){
+		return pizzaOrderRepo.findAll();
 	}
 	
 	@GetMapping("/orders/{id}")
-	public Order sendOrder(@PathVariable Long id) {
-		return orderRepo.findById(id).get();	
+	public PizzaOrder sendOrder(@PathVariable Long id) {
+		return pizzaOrderRepo.findById(id).get();	
 	}
 	@PostMapping("/place-order")
-	public Order placeOrder(@RequestBody Order order) {
+	public PizzaOrder placePizzaOrder(@RequestBody PizzaOrder order) {
 //		might make a funtion to double check that the data is valid before saving
 		
-		return orderRepo.save(order);
+		return pizzaOrderRepo.save(order);
 	}
 	
 }

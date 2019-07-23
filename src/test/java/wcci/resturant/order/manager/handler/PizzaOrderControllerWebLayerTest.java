@@ -23,26 +23,26 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebMvcTest(OrderController.class)
+@WebMvcTest(PizzaOrderController.class)
 @RunWith(SpringRunner.class)
-public class OrderControllerWebLayerTest {
+public class PizzaOrderControllerWebLayerTest {
 
 	@Autowired
 	MockMvc mockMvc;
 	
 	@MockBean
-	OrderRepository orderRepo;
+	PizzaOrderRepository orderRepo;
 	
-	private Order testOrder;
-	private Order testOrder2;
+	private PizzaOrder testOrder;
+	private PizzaOrder testOrder2;
 	private Pizza testPizza;
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	@Before
 	public void setup( ) {
-		testOrder = new Order("John", false, "4:00");
+		testOrder = new PizzaOrder("John", false, "4:00");
 		testPizza =  new Pizza("ItemName","Ingredeints", null, null, testOrder);
-		testOrder2 = new Order("Ted", false, "5:00");
+		testOrder2 = new PizzaOrder("Ted", false, "5:00");
 	}
 	
 	@Test
@@ -67,7 +67,7 @@ public class OrderControllerWebLayerTest {
 	
 	@Test
 	public void placeNewOrder() throws Exception {
-		when(orderRepo.save(any(Order.class))).thenReturn(testOrder2);
+		when(orderRepo.save(any(PizzaOrder.class))).thenReturn(testOrder2);
 
  		mockMvc.perform(post("/api/place-order")
  				.contentType(MediaType.APPLICATION_JSON)
@@ -77,7 +77,7 @@ public class OrderControllerWebLayerTest {
 
 	}
 
-	private String toJson(Order order) {
+	private String toJson(PizzaOrder order) {
 		return testOrder2.getName();
 	}
 	
