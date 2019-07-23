@@ -2,21 +2,25 @@ package wcci.resturant.order.manager.handler;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+@Entity
 public class Ingrediant {
 	@Id
 	@GeneratedValue
     private Long id;
+	
 	@ManyToMany(mappedBy="ingrediants")
-	private Collection <Pizza> fooditems;
+	private Collection <Pizza> pizzas;
+	
     private String ingrediantName;
     	private String toppingType;
-	public Ingrediant(String ingrediantName,String toppingType,Pizza foodItem) {
+	public Ingrediant(String ingrediantName,String toppingType) {
 		this.ingrediantName=ingrediantName;
-		this.fooditems=new ArrayList<>();
+		this.pizzas=new ArrayList<>();
 		this.toppingType = toppingType;
 		
 	}
@@ -24,7 +28,7 @@ public class Ingrediant {
 		return id;
 	}
 	public Collection<Pizza> getFooditems() {
-		return fooditems;
+		return pizzas;
 	}
 	public String getIngrediantName() {
 		return ingrediantName;

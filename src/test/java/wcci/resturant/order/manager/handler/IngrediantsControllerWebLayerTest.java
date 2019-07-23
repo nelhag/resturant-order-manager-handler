@@ -37,7 +37,7 @@ public class IngrediantsControllerWebLayerTest {
 	@Before
 	public void setup() {
 		testPizza = new Pizza("ItemName","Ingredeints", null, null, null);
-		testTopping = new Ingrediant("olive", null, testPizza);
+		testTopping = new Ingrediant("olive", null);
 	}
 	
 	@Test
