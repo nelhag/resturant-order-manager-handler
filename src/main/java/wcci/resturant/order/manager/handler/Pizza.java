@@ -23,21 +23,46 @@ public class Pizza {
 	private Collection<Ingrediant> ingrediants;
 	
 	@ManyToOne
-	private Order order;
+	private PizzaOrder pizzaorder;
 	
 	private String comments;
 	private String  crust;
 	private String  sauce;
 	
-	public Pizza(String itemName, String comments,String sauce, String crust, Order order) {
+	public Pizza(String itemName, String comments,String sauce, String crust, PizzaOrder pizzaorder) {
 		this.itemName = itemName;
 		this.comments = comments;
-		this.order=order;
 		this.crust=crust;
 		this.sauce=sauce;
+		this.pizzaorder=pizzaorder;
 		this.ingrediants  = new ArrayList<>();
 		
 	
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pizza other = (Pizza) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 	public String getItemName() {
@@ -47,12 +72,15 @@ public class Pizza {
 	public Collection<Ingrediant> getIngrediants() {
 		return ingrediants;
 	}
+	public String findByIngrediantName(String name) {
+		this.ingrediants.
+	}
 
 	public String getComments() {
 		return comments;
 	}
-    public Order getOrder() {
-		return order;
+    public PizzaOrder getOrder() {
+		return pizzaorder;
 	}
 
 
@@ -63,8 +91,8 @@ public class Pizza {
 	public void addIngrediant(Ingrediant ingrediant) {
 	this.ingrediants.add(ingrediant);
 }
-	public void addOrder(Order order) {
-		this.order=order;
+	public void addOrder(PizzaOrder pizzaorder) {
+		this.pizzaorder=pizzaorder;
 	}
 	public String getCrust() {
 		return crust;
