@@ -15,6 +15,9 @@ public class PizzaOrder {
 	@GeneratedValue
     private Long id;
 	
+	public Long getId() {
+		return id;
+	}
 	@OneToMany(mappedBy = "pizzaorder")
 	private Collection<Pizza> pizzas;
 	
