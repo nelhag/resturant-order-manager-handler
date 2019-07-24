@@ -24,6 +24,8 @@ public class Ingrediant {
 		this.toppingType = toppingType;
 		
 	}
+	public Ingrediant() {}
+	
 	public Collection<Pizza> getPizzas() { 
 		return pizzas;
 	}   

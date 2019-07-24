@@ -38,12 +38,8 @@ public class JPAwiringtest {
 	
 	@Before
 	public void setup() {
-		scottsPizza = new Pizza("scottPizza1", "cook for 1 extra minute","regular", "thin", scottsOrder);
-		pizzaRepo.save(scottsPizza);
-		scottsTopping1 = new Ingrediant("mushroom","veggie");
 		scottsTopping2 = new Ingrediant("banana pepper","veggie");
 		scottsTopping3 = new Ingrediant("pepperoni", "protein");
-		ingrediantsRepo.save(scottsTopping1);
 		ingrediantsRepo.save(scottsTopping2);
 		ingrediantsRepo.save(scottsTopping3);
 	}
@@ -52,7 +48,7 @@ public class JPAwiringtest {
 	public void shouldStartJPATestFramework() {}
 
 	@Test
-	public void ShouldSaveAndLoadObjects() {
+	public void ShouldSaveAndLoadPizzaOrders() {
 		PizzaOrder scottsOrder = new PizzaOrder("Scott", false, "3:00");
 		PizzaOrder savedOrder = pizzaOrderRepo.save(scottsOrder);
 		Long id = savedOrder.getId();
@@ -65,19 +61,38 @@ public class JPAwiringtest {
 		assertThat(resultingOrder.getName(), is("Scott"));
 		
 		
-//		
-//		LogEntry unsavedLogEntry = new LogEntry(null, 101001001, 101001002, LocalDate.of(2020, 1, 1));
-//		LogEntry savedLogEntry = logEntryRepo.save(unsavedLogEntry);
-//		Long logEntryId = savedLogEntry.getId();
-//		
-//		entityManager.flush();
-//		entityManager.clear();
-//
-//		Optional<LogEntry> result = logEntryRepo.findById(logEntryId);
-//		LogEntry resultLogEntry = result.get();
-//		assertThat(resultLogEntry.getStartVerseId(), is(101001001));
 	}
 		
+	@Test
+	public void ShouldSaveAndLoadPizza() {
+		
+		Pizza scottsPizza = new Pizza("scottPizza1", "cook for 1 extra minute","regular", "thin", scottsOrder);
+		Pizza savedPizza = pizzaRepo.save(scottsPizza);
+		Long id = savedPizza.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		Optional <Pizza> result = pizzaRepo.findById(id);
+		Pizza resultPizza = result.get();
+		assertThat(resultPizza.getItemName(), is("scottPizza1"));
+	}
+	
+	@Test
+	public void ShouldSaveAndLoadIngrediant() {
+		Ingrediant topping = new Ingrediant("mushroom","veggie");
+		Ingrediant savedTopping = ingrediantsRepo.save(topping);
+		Long id = savedTopping.getId();
+				
+		entityManager.flush();
+		entityManager.clear();
+		
+		Optional<Ingrediant> result = ingrediantsRepo.findById(id);
+		Ingrediant resultTopping = result.get();
+		assertThat(resultTopping.getIngrediantName(), is("mushroom"));
+		
+	}
+	
 //		assertThat(pizzaRepo.findByitemName("scottPizza1").getItemName(), is("scottPizza1"));
 //		assertThat(pizzaRepo.findByitemName("scottPizza1").getIngrediants().), is("Scott"));
 		
