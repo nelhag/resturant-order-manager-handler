@@ -38,8 +38,8 @@ public class Pizza {
 		this.pizzaorder=pizzaorder;
 		this.ingrediants  = new ArrayList<>();
 		
-	
 	}
+	public Pizza () {}
 
 	public PizzaOrder getPizzaorder() {
 		return pizzaorder;
@@ -52,9 +52,9 @@ public class Pizza {
 	public Collection<Ingrediant> getIngrediants() {
 		return ingrediants;
 	}
-	public String findByIngrediantName(String name) {
-		this.ingrediants.
-	}
+//	public String findByIngrediantName(String name) {
+//		this.ingrediants.
+//	}
 
 	public String getComments() {
 		return comments;
