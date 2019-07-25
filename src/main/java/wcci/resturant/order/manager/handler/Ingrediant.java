@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+
+
 @Entity
 public class Ingrediant {
 	@Id
@@ -29,6 +31,7 @@ public class Ingrediant {
 	public Collection<Pizza> getPizzas() { 
 		return pizzas;
 	}   
+
 	public Long getId() {
 		return id;
 	}

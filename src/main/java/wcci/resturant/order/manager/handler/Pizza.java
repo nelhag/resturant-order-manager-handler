@@ -44,6 +44,7 @@ public class Pizza {
 	public PizzaOrder getPizzaorder() {
 		return pizzaorder;
 	}
+	
 
 	public String getItemName() {
 		return itemName;
@@ -52,9 +53,13 @@ public class Pizza {
 	public Collection<Ingrediant> getIngrediants() {
 		return ingrediants;
 	}
-//	public String findByIngrediantName(String name) {
-//		this.ingrediants.
-//	}
+	
+	public void addToppingToPizza(Ingrediant ingrediant) {
+		if (!ingrediants.contains(ingrediant)) {
+			this.ingrediants.add(ingrediant);
+		}
+	}
+
 
 	public String getComments() {
 		return comments;
