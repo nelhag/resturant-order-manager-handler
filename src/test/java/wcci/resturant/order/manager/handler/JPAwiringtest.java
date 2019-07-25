@@ -34,21 +34,21 @@ public class JPAwiringtest {
 	private PizzaOrderRepository pizzaOrderRepo;
 	
 	@Autowired
-	private IngrediantRepository ingrediantsRepo;
+	private ToppingRepository toppingsRepo;
 	
 	private PizzaOrder scottsOrder;
 	private Pizza scottsPizza;
-	private Ingrediant scottsTopping1;
-	private Ingrediant scottsTopping2;
-	private Ingrediant scottsTopping3;
+	private Topping scottsTopping1;
+	private Topping scottsTopping2;
+	private Topping scottsTopping3;
 	
 	
 	@Before
 	public void setup() {
-		scottsTopping2 = new Ingrediant("banana pepper","veggie");
-		scottsTopping3 = new Ingrediant("pepperoni", "protein");
-		ingrediantsRepo.save(scottsTopping2);
-		ingrediantsRepo.save(scottsTopping3);
+		scottsTopping2 = new Topping("banana pepper","veggie");
+		scottsTopping3 = new Topping("pepperoni", "protein");
+		toppingsRepo.save(scottsTopping2);
+		toppingsRepo.save(scottsTopping3);
 	}
 	
 	@Test
@@ -87,16 +87,16 @@ public class JPAwiringtest {
 	
 	@Test
 	public void ShouldSaveAndLoadIngrediant() {
-		Ingrediant topping = new Ingrediant("mushroom","veggie");
-		Ingrediant savedTopping = ingrediantsRepo.save(topping);
+		Topping topping = new Topping("mushroom","veggie");
+		Topping savedTopping = toppingsRepo.save(topping);
 		Long id = savedTopping.getId();
 				
 		entityManager.flush();
 		entityManager.clear();
 		
-		Optional<Ingrediant> result = ingrediantsRepo.findById(id);
-		Ingrediant resultTopping = result.get();
-		assertThat(resultTopping.getIngrediantName(), is("mushroom"));
+		Optional<Topping> result = toppingsRepo.findById(id);
+		Topping resultTopping = result.get();
+		assertThat(resultTopping.getToppingName(), is("mushroom"));
 		
 	}
 	@Test
@@ -117,9 +117,9 @@ public class JPAwiringtest {
 	@Test
 	public void ShouldAddToppingsToPizza() {
 		Pizza scottsPizza = new Pizza("scottPizza1", "cook for 1 extra minute","regular", "thin", scottsOrder);
-		Ingrediant topping = new Ingrediant("mushroom","veggie");
-		scottsPizza.addIngrediant(topping);
-		ingrediantsRepo.save(topping);
+		Topping topping = new Topping("mushroom","veggie");
+		scottsPizza.addTopping(topping);
+		toppingsRepo.save(topping);
 		
 		
 		Pizza savedPizza = pizzaRepo.save(scottsPizza);
@@ -129,7 +129,7 @@ public class JPAwiringtest {
 		entityManager.clear();
 		
 		Optional<Pizza> changedPizza = pizzaRepo.findById(id);
-		Collection<Ingrediant> ingredients = changedPizza.get().getIngrediants();
+		Collection<Topping> ingredients = changedPizza.get().getToppings();
 		assertThat(ingredients, containsInAnyOrder(topping));	
 	}
 	}

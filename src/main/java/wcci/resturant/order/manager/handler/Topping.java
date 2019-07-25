@@ -10,23 +10,23 @@ import javax.persistence.ManyToMany;
 
 
 @Entity
-public class Ingrediant {
+public class Topping {
 	@Id
 	@GeneratedValue
     private Long id;
 	
-	@ManyToMany(mappedBy="ingrediants")
+	@ManyToMany(mappedBy="toppings")
 	private Collection <Pizza> pizzas;
 	
-    private String ingrediantName;
+    private String toppingName;
     	private String toppingType;
-	public Ingrediant(String ingrediantName,String toppingType) {
-		this.ingrediantName=ingrediantName;
+	public Topping(String toppingName,String toppingType) {
+		this.toppingName=toppingName;
 		this.pizzas=new ArrayList<>();
 		this.toppingType = toppingType;
 		
 	}
-	public Ingrediant() {}
+	public Topping() {}
 	
 	public Collection<Pizza> getPizzas() { 
 		return pizzas;
@@ -38,8 +38,8 @@ public class Ingrediant {
 	public Collection<Pizza> getFooditems() {
 		return pizzas;
 	}
-	public String getIngrediantName() {
-		return ingrediantName;
+	public String getToppingName() {
+		return toppingName;
 	}
 	public String getToppingType() {
 		return toppingType;
@@ -63,7 +63,7 @@ public boolean equals(Object obj) {
 		return false;
 	if (getClass() != obj.getClass())
 		return false;
-	Ingrediant other = (Ingrediant) obj;
+	Topping other = (Topping) obj;
 	if (id == null) {
 		if (other.id != null)
 			return false;
