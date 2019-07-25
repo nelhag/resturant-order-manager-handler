@@ -34,7 +34,7 @@ public class JPAwiringtest {
 	private PizzaOrderRepository pizzaOrderRepo;
 	
 	@Autowired
-	private ToppingRepository ingrediantsRepo;
+	private ToppingRepository toppingsRepo;
 	
 	private PizzaOrder scottsOrder;
 	private Pizza scottsPizza;
@@ -47,8 +47,8 @@ public class JPAwiringtest {
 	public void setup() {
 		scottsTopping2 = new Topping("banana pepper","veggie");
 		scottsTopping3 = new Topping("pepperoni", "protein");
-		ingrediantsRepo.save(scottsTopping2);
-		ingrediantsRepo.save(scottsTopping3);
+		toppingsRepo.save(scottsTopping2);
+		toppingsRepo.save(scottsTopping3);
 	}
 	
 	@Test
@@ -88,13 +88,13 @@ public class JPAwiringtest {
 	@Test
 	public void ShouldSaveAndLoadIngrediant() {
 		Topping topping = new Topping("mushroom","veggie");
-		Topping savedTopping = ingrediantsRepo.save(topping);
+		Topping savedTopping = toppingsRepo.save(topping);
 		Long id = savedTopping.getId();
 				
 		entityManager.flush();
 		entityManager.clear();
 		
-		Optional<Topping> result = ingrediantsRepo.findById(id);
+		Optional<Topping> result = toppingsRepo.findById(id);
 		Topping resultTopping = result.get();
 		assertThat(resultTopping.getToppingName(), is("mushroom"));
 		
@@ -117,9 +117,9 @@ public class JPAwiringtest {
 	@Test
 	public void ShouldAddToppingsToPizza() {
 		Pizza scottsPizza = new Pizza("scottPizza1", "cook for 1 extra minute","regular", "thin", scottsOrder);
-		Ingrediant topping = new Ingrediant("mushroom","veggie");
-		scottsPizza.addIngrediant(topping);
-		ingrediantsRepo.save(topping);
+		Topping topping = new Topping("mushroom","veggie");
+		scottsPizza.addTopping(topping);
+		toppingsRepo.save(topping);
 		
 		
 		Pizza savedPizza = pizzaRepo.save(scottsPizza);
@@ -129,7 +129,7 @@ public class JPAwiringtest {
 		entityManager.clear();
 		
 		Optional<Pizza> changedPizza = pizzaRepo.findById(id);
-		Collection<Ingrediant> ingredients = changedPizza.get().getIngrediants();
+		Collection<Topping> ingredients = changedPizza.get().getToppings();
 		assertThat(ingredients, containsInAnyOrder(topping));	
 	}
 	}

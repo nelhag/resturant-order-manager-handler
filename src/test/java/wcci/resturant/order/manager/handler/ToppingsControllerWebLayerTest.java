@@ -43,7 +43,7 @@ public class ToppingsControllerWebLayerTest {
 	@Test
 	public void fetchCollectionOfIngrediants() throws Exception{
 		when(toppingRepo.findAll()).thenReturn(Collections.singletonList(testTopping));
-		mockMvc.perform(get("/api/ingrediants"))
+		mockMvc.perform(get("/api/toppings"))
 		.andDo(print())
 		.andExpect(status().isOk())
 		.andExpect(content().contentType("application/json;charset=UTF-8"))
@@ -52,7 +52,7 @@ public class ToppingsControllerWebLayerTest {
 	@Test
 	public void fetchSingleIngrediant() throws Exception{
 		when(toppingRepo.findById(1L)).thenReturn(Optional.of(testTopping));
-		mockMvc.perform(get("/api/ingrediants/1"))
+		mockMvc.perform(get("/api/toppings/1"))
 		.andDo(print())
 		.andExpect(status().isOk())
 		.andExpect(content().contentType("application/json;charset=UTF-8"))

@@ -44,22 +44,17 @@ public class Pizza {
 	public PizzaOrder getPizzaorder() {
 		return pizzaorder;
 	}
-	
 
 	public String getItemName() {
 		return itemName;
 	}
 
-	public Collection<Topping> getIngrediants() {
+	public Collection<Topping> getToppings() {
 		return toppings;
 	}
-	
-	public void addToppingToPizza(Ingrediant ingrediant) {
-		if (!ingrediants.contains(ingrediant)) {
-			this.ingrediants.add(ingrediant);
-		}
-	}
-
+//	public String findByIngrediantName(String name) {
+//		this.ingrediants.
+//	}
 
 	public String getComments() {
 		return comments;
@@ -70,8 +65,8 @@ public class Pizza {
 		return id;
 	}
 
-	public void addIngrediant(Topping ingrediant) {
-	this.toppings.add(ingrediant);
+	public void addTopping(Topping topping) {
+	this.toppings.add(topping);
 }
 	public void addOrder(PizzaOrder pizzaorder) {
 		this.pizzaorder=pizzaorder;
