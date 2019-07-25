@@ -1,8 +1,14 @@
 package wcci.resturant.order.manager.handler;
 
+
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.is;
 
+
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -93,6 +99,20 @@ public class JPAwiringtest {
 		assertThat(resultTopping.getIngrediantName(), is("mushroom"));
 		
 	}
+	@Test
+	public void shouldAddPizzaToPizzaOrder() {
+		PizzaOrder pizzaOrderTest=new PizzaOrder();
+		Pizza pizzaTest=new Pizza( "Bufflo",  "add ketchup", "mild",  "thin",  pizzaOrderTest) ;
+		pizzaRepo.save(pizzaTest);
+        PizzaOrder savedOrder=pizzaOrderRepo.save(pizzaOrderTest);
+		Long id=savedOrder.getId();
+		entityManager.flush();
+		entityManager.clear();
+		PizzaOrder order1 = pizzaOrderRepo.findById(id).get();
+		assertThat(order1.getPizzas(),contains(pizzaTest));
+		
+	}
+	
 	
 	@Test
 	public void ShouldAddToppingsToPizza() {
