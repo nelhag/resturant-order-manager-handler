@@ -21,7 +21,7 @@ public class Pizza {
 
 	private String itemName;
 	@ManyToMany
-	private Collection<Ingrediant> ingrediants;
+	private Collection<Topping> toppings;
 	
 	@ManyToOne
 	private PizzaOrder pizzaorder;
@@ -36,7 +36,7 @@ public class Pizza {
 		this.crust=crust;
 		this.sauce=sauce;
 		this.pizzaorder=pizzaorder;
-		this.ingrediants  = new ArrayList<>();
+		this.toppings  = new ArrayList<>();
 		
 	}
 	public Pizza () {}
@@ -49,8 +49,8 @@ public class Pizza {
 		return itemName;
 	}
 
-	public Collection<Ingrediant> getIngrediants() {
-		return ingrediants;
+	public Collection<Topping> getIngrediants() {
+		return toppings;
 	}
 //	public String findByIngrediantName(String name) {
 //		this.ingrediants.
@@ -65,8 +65,8 @@ public class Pizza {
 		return id;
 	}
 
-	public void addIngrediant(Ingrediant ingrediant) {
-	this.ingrediants.add(ingrediant);
+	public void addIngrediant(Topping ingrediant) {
+	this.toppings.add(ingrediant);
 }
 	public void addOrder(PizzaOrder pizzaorder) {
 		this.pizzaorder=pizzaorder;

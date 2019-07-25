@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class IngrediantsController {
+public class ToppingController {
 
 	@Autowired
-	private IngrediantRepository ingrediantRepo;
+	private ToppingRepository toppingRepo;
 	
-	@GetMapping("/ingrediants")
-	public Iterable<Ingrediant> sendIngrediants(){
-		return ingrediantRepo.findAll();
+	@GetMapping("/toppings")
+	public Iterable<Topping> sendToppings(){
+		return toppingRepo.findAll();
 	}
-	@GetMapping("/ingrediants/{id}")
-	public Ingrediant sendIngrediant(@PathVariable Long id) {
-		return ingrediantRepo.findById(id).get();
+	@GetMapping("/toppings/{id}")
+	public Topping sendTopping(@PathVariable Long id) {
+		return toppingRepo.findById(id).get();
 	}
 	
 }

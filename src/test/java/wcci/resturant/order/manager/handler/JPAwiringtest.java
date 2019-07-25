@@ -27,19 +27,19 @@ public class JPAwiringtest {
 	private PizzaOrderRepository pizzaOrderRepo;
 	
 	@Autowired
-	private IngrediantRepository ingrediantsRepo;
+	private ToppingRepository ingrediantsRepo;
 	
 	private PizzaOrder scottsOrder;
 	private Pizza scottsPizza;
-	private Ingrediant scottsTopping1;
-	private Ingrediant scottsTopping2;
-	private Ingrediant scottsTopping3;
+	private Topping scottsTopping1;
+	private Topping scottsTopping2;
+	private Topping scottsTopping3;
 	
 	
 	@Before
 	public void setup() {
-		scottsTopping2 = new Ingrediant("banana pepper","veggie");
-		scottsTopping3 = new Ingrediant("pepperoni", "protein");
+		scottsTopping2 = new Topping("banana pepper","veggie");
+		scottsTopping3 = new Topping("pepperoni", "protein");
 		ingrediantsRepo.save(scottsTopping2);
 		ingrediantsRepo.save(scottsTopping3);
 	}
@@ -80,16 +80,16 @@ public class JPAwiringtest {
 	
 	@Test
 	public void ShouldSaveAndLoadIngrediant() {
-		Ingrediant topping = new Ingrediant("mushroom","veggie");
-		Ingrediant savedTopping = ingrediantsRepo.save(topping);
+		Topping topping = new Topping("mushroom","veggie");
+		Topping savedTopping = ingrediantsRepo.save(topping);
 		Long id = savedTopping.getId();
 				
 		entityManager.flush();
 		entityManager.clear();
 		
-		Optional<Ingrediant> result = ingrediantsRepo.findById(id);
-		Ingrediant resultTopping = result.get();
-		assertThat(resultTopping.getIngrediantName(), is("mushroom"));
+		Optional<Topping> result = ingrediantsRepo.findById(id);
+		Topping resultTopping = result.get();
+		assertThat(resultTopping.getToppingName(), is("mushroom"));
 		
 	}
 	

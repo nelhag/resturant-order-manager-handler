@@ -20,29 +20,29 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebMvcTest(IngrediantsController.class)
+@WebMvcTest(ToppingController.class)
 @RunWith(SpringRunner.class)
-public class IngrediantsControllerWebLayerTest {
+public class ToppingsControllerWebLayerTest {
 
 	@Autowired
 	MockMvc mockMvc;
 	
 	@MockBean
-	IngrediantRepository ingrediantRepo;
+	ToppingRepository toppingRepo;
 	
-	private Ingrediant testTopping;
+	private Topping testTopping;
 	private Pizza testPizza;
 	private ObjectMapper mapper = new ObjectMapper();
 
 	@Before
 	public void setup() {
 		testPizza = new Pizza("ItemName","Ingredeints", null, null, null);
-		testTopping = new Ingrediant("olive", null);
+		testTopping = new Topping("olive", null);
 	}
 	
 	@Test
 	public void fetchCollectionOfIngrediants() throws Exception{
-		when(ingrediantRepo.findAll()).thenReturn(Collections.singletonList(testTopping));
+		when(toppingRepo.findAll()).thenReturn(Collections.singletonList(testTopping));
 		mockMvc.perform(get("/api/ingrediants"))
 		.andDo(print())
 		.andExpect(status().isOk())
@@ -51,7 +51,7 @@ public class IngrediantsControllerWebLayerTest {
 	}
 	@Test
 	public void fetchSingleIngrediant() throws Exception{
-		when(ingrediantRepo.findById(1L)).thenReturn(Optional.of(testTopping));
+		when(toppingRepo.findById(1L)).thenReturn(Optional.of(testTopping));
 		mockMvc.perform(get("/api/ingrediants/1"))
 		.andDo(print())
 		.andExpect(status().isOk())

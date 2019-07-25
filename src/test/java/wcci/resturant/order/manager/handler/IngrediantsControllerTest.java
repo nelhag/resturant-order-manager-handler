@@ -6,9 +6,9 @@ import org.mockito.Mock;
 public class IngrediantsControllerTest {
 
 	@InjectMocks
-	private IngrediantsController underTest;
+	private ToppingController underTest;
 	@Mock
-	private IngrediantRepository IngrediantsRepo;
+	private ToppingRepository IngrediantsRepo;
 	@Mock
-	private Ingrediant ingrediants;
+	private Topping ingrediants;
 }
