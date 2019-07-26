@@ -1,3 +1,4 @@
+
 package wcci.resturant.order.manager.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ private PizzaOrderRepository pizzaOrderRepo;
 @Autowired 
 private PizzaRepository pizzaRepo;
 @Autowired
-private IngrediantRepository ingrediantRepo;
+private ToppingRepository ToppingRepo;
 @Override
 public void run(String... args) throws Exception{
 	PizzaOrder order1=new PizzaOrder("Sam",true, "7/25/19 11:00pm");
@@ -36,34 +37,34 @@ public void run(String... args) throws Exception{
 	Pizza pizza4= new Pizza("pizza4","add napkins","spicy","thick",order1);
 	pizzaRepo.save(pizza4);
 	
-	Ingrediant cheddar=new Ingrediant ("cheddar","Cheese");
-	ingrediantRepo.save(cheddar);
-	Ingrediant swiss=new Ingrediant ("swiss","Cheese");
-	ingrediantRepo.save(swiss);
-	Ingrediant ItalianSausage=new Ingrediant ("Italian Sausage","Meat");
-	ingrediantRepo.save(ItalianSausage);
-	Ingrediant beef=new Ingrediant ("Beef","Meat");
-	ingrediantRepo.save(beef);
-	Ingrediant GrilledChicken=new Ingrediant ("Grilled Chicken","Meat");
-	ingrediantRepo.save(GrilledChicken);
-	Ingrediant peproni=new Ingrediant ("Peproni","Meat");
-	ingrediantRepo.save(peproni);
-	Ingrediant  meatBall=new Ingrediant (" Meat Ball","Meat");
-	ingrediantRepo.save(meatBall);
-	Ingrediant  mushrooms=new Ingrediant (" Mushrooms","Veggie");
-	ingrediantRepo.save(mushrooms);
-	Ingrediant  roastedSpinach = new Ingrediant (" Roasted Spinach","Veggie");
-	ingrediantRepo.save(roastedSpinach);
-	Ingrediant  redOnions =new Ingrediant ("Red Onions","Veggie");
-	ingrediantRepo.save( redOnions);
-	Ingrediant  mediterraneanBlackOlives =new Ingrediant ("Mediterranean Black Olives","Veggie");
-	ingrediantRepo.save( mediterraneanBlackOlives);
-	Ingrediant  mediterraneanBlackOlives1 =new Ingrediant ("Mediterranean Black Olives","Veggie");
-	ingrediantRepo.save( mediterraneanBlackOlives1);
-	Ingrediant greenBellPeppers =new Ingrediant ("Green Bell Peppers","Veggie");
-	ingrediantRepo.save( greenBellPeppers);
-	Ingrediant  pineapple =new Ingrediant (" Pineapple","Veggie");
-	ingrediantRepo.save(pineapple);	 
+	Topping cheddar=new Topping ("cheddar","Cheese");
+	ToppingRepo.save(cheddar);
+	Topping swiss=new Topping ("swiss","Cheese");
+	ToppingRepo.save(swiss);
+	Topping ItalianSausage=new Topping ("Italian Sausage","Meat");
+	ToppingRepo.save(ItalianSausage);
+	Topping beef=new Topping ("Beef","Meat");
+	ToppingRepo.save(beef);
+	Topping GrilledChicken=new Topping ("Grilled Chicken","Meat");
+	ToppingRepo.save(GrilledChicken);
+	Topping peproni=new Topping ("Peproni","Meat");
+	ToppingRepo.save(peproni);
+	Topping  meatBall=new Topping (" Meat Ball","Meat");
+	ToppingRepo.save(meatBall);
+	Topping  mushrooms=new Topping (" Mushrooms","Veggie");
+	ToppingRepo.save(mushrooms);
+	Topping  roastedSpinach = new Topping (" Roasted Spinach","Veggie");
+	ToppingRepo.save(roastedSpinach);
+	Topping  redOnions =new Topping ("Red Onions","Veggie");
+	ToppingRepo.save( redOnions);
+	Topping  mediterraneanBlackOlives =new Topping ("Mediterranean Black Olives","Veggie");
+	ToppingRepo.save( mediterraneanBlackOlives);
+	Topping  mediterraneanBlackOlives1 =new Topping ("Mediterranean Black Olives","Veggie");
+	ToppingRepo.save( mediterraneanBlackOlives1);
+	Topping greenBellPeppers =new Topping ("Green Bell Peppers","Veggie");
+	ToppingRepo.save( greenBellPeppers);
+	Topping  pineapple =new Topping (" Pineapple","Veggie");
+	ToppingRepo.save(pineapple);	 
 	
 	order1.addPizza(pizza1);
 	order1.addPizza(pizza4);
