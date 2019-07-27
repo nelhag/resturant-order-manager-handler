@@ -2,6 +2,7 @@ package wcci.resturant.order.manager.handler;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ public class PizzaOrder {
 	private String name;
 	private boolean paymentMethod;
 	private String orderTime;
+	private int toppingTotal;
 	
 
 
@@ -32,6 +34,7 @@ public class PizzaOrder {
 		this.paymentMethod = true;
 		this.orderTime = orderTime;
 		this.pizzas=new ArrayList<>();
+		this.toppingTotal = toppingCounter();
 //		we were thinking of adding address in a child class 
 //		false on payment method means they pay in hard currency
 		
@@ -41,8 +44,21 @@ public class PizzaOrder {
 		public Collection<Pizza> getPizzas() {
 			return pizzas;
 		}
+	public int toppingCounter(){
+		int total=0;
+		Iterator<Pizza> item = pizzas.iterator();
+		while(item.hasNext()) {
+			Pizza pizza = (Pizza)item.next();
+			total= total+pizza.toppings().size();
+			;
+		}
+		return total;
+		}
 		
 		
+	public int getToppingTotal() {
+		return toppingTotal;
+	}
 		@Override
 		public int hashCode() {
 			final int prime = 31;

@@ -50,7 +50,7 @@ public class Pizza {
 		return itemName;
 	}
 
-	public Collection<Topping> getToppings() {
+	public Collection<Topping> toppings() {
 		return toppings;
 	}
 	

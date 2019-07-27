@@ -129,8 +129,25 @@ public class JPAwiringtest {
 		entityManager.clear();
 		
 		Optional<Pizza> changedPizza = pizzaRepo.findById(id);
-		Collection<Topping> ingredients = changedPizza.get().getToppings();
+		Collection<Topping> ingredients = changedPizza.get().toppings();
 		assertThat(ingredients, containsInAnyOrder(topping));	
+	}
+	@Test
+	public void returnItemTotalOrderShouldbe1() {
+		Pizza scottsPizza2 = new Pizza("scottPizza2", "cook for 1 extra minute","regular", "thin", scottsOrder);
+		Pizza scottsPizza1 = new Pizza("scottPizza1", "cook for 1 extra minute","regular", "thin", scottsOrder);
+		Pizza savedPizza1 = pizzaRepo.save(scottsPizza1);
+		Pizza savedPizza2 = pizzaRepo.save(scottsPizza2);
+		Topping topping = new Topping("mushroom","veggie");
+		System.out.println("lalalalala" + scottsOrder.toppingCounter());
+		scottsPizza1.addTopping(topping);
+		toppingsRepo.save(topping);
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		
+		assertThat(scottsOrder.toppingCounter(), is(1));
 	}
 	}
 	
