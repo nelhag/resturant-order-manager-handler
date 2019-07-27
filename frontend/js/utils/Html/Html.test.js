@@ -1,4 +1,4 @@
-import Html from "./tools.js";
+import Html from "./Html.js";
 
 describe("Html", () => {
     describe("constructor", () => {
