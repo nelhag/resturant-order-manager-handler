@@ -1,0 +1,22 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nelhag/resturant-order-manager-handler.git",
+  "author": "nelhag <lamais2006@yahoo.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel ./index.html",
+    "test": "jest /src/js --colors --coverage --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel": "^6.23.0",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.12.3"
+  }
+}
