@@ -8,8 +8,11 @@ class Html {
 
         return this;
     }
-    addChild(childToAdd) {
-        this.element.append(childToAdd.render());
+    addChild(elementToAdd) {
+        if (elementToAdd.render() instanceof HTMLUnknownElement) {
+            throw new Error("Invalid HTML tag");
+        }
+        this.element.append(elementToAdd.render());
         return this;
     }
 
