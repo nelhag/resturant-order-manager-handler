@@ -166,6 +166,7 @@ function () {
       }
 
       this.element.classList.add(classToAdd);
+      console.log(classToAdd);
       return this;
     }
   }, {
@@ -335,15 +336,15 @@ function () {
   }, {
     key: "renderContentBlock",
     value: function renderContentBlock() {
-      var contentBlock = (0, _Html.default)('section').addClass('content-block');
-      var contentBlockTitle = (0, _Html.default)('h3').addClass('content-block__title').text('Welcome_Large_Pizza');
+      var contentBlock = (0, _Html.default)().create('section').addClass('content-block');
+      var contentBlockTitle = (0, _Html.default)().create('h3').addClass('content-block__title').text('Welcome_Large_Pizza');
       contentBlock.addChild(contentBlockTitle);
       return contentBlock;
     }
   }, {
     key: "renderMainContent",
     value: function renderMainContent() {
-      var mainContent = (0, _Html.default)('main').addClass("main-content");
+      var mainContent = (0, _Html.default)().create('main').addClass("main-content");
       var containerDiv = (0, _Html.default)().create('div').addClass('container');
       var contentBlock = this.renderContentBlock();
       containerDiv.addChild(contentBlock);
@@ -353,16 +354,16 @@ function () {
   }, {
     key: "renderMainFooter",
     value: function renderMainFooter() {
-      var mainFooter = (0, _Html.default)('footer').addClass('main-footer'); // const mainFooterCopy = Html('small').addClass('main-footer__copty').html('&copy; 2019 Large Pizza\'s');
-
+      var mainFooter = (0, _Html.default)().create('footer').addClass('main-footer');
+      var mainFooterCopy = (0, _Html.default)().create('small').addClass('main-footer__copty').html('&copy; 2019 Large Pizza\'s');
       mainFooter.addChild(mainFooterCopy);
       return mainFooter;
     }
   }, {
     key: "renderMainHeader",
     value: function renderMainHeader() {
-      var mainHeader = (0, _Html.default)('header').addClass('main-header');
-      var mainHeaderTitle = (0, _Html.default)('h1').addClass('main-header__title').text('Large Pizza');
+      var mainHeader = (0, _Html.default)().create('header').addClass('main-header');
+      var mainHeaderTitle = (0, _Html.default)().create('h1').addClass('main-header__title').text('Large Pizza');
       mainHeader.addChild(mainHeaderTitle);
       return mainHeader;
     }
@@ -406,7 +407,7 @@ var _main = _interopRequireDefault(require("./main"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _main.default)();
-},{"./main":"js/main.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./main":"js/main.js"}],"../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -434,7 +435,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60607" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62036" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -609,5 +610,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
+},{}]},{},["../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
 //# sourceMappingURL=/js.00a46daa.js.map

@@ -21,6 +21,7 @@ class Html {
             throw new Error("duplicate class error");
         }
         this.element.classList.add(classToAdd);
+        console.log(classToAdd);
         return this;
     }
     click(callback) {

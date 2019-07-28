@@ -16,8 +16,8 @@ class Components {
     }
 
     renderContentBlock() {
-        const contentBlock = Html('section').addClass('content-block');
-        const contentBlockTitle = Html('h3').addClass('content-block__title').text('Welcome_Large_Pizza');
+        const contentBlock = Html().create('section').addClass('content-block');
+        const contentBlockTitle = Html().create('h3').addClass('content-block__title').text('Welcome_Large_Pizza');
 
 
         contentBlock.addChild(contentBlockTitle);
@@ -25,7 +25,7 @@ class Components {
     }
 
     renderMainContent() {
-        const mainContent = Html('main').addClass("main-content");
+        const mainContent = Html().create('main').addClass("main-content");
         const containerDiv = Html().create('div').addClass('container');
         const contentBlock = this.renderContentBlock();
         containerDiv.addChild(contentBlock);
@@ -34,15 +34,15 @@ class Components {
     }
 
     renderMainFooter() {
-        const mainFooter = Html('footer').addClass('main-footer');
-        // const mainFooterCopy = Html('small').addClass('main-footer__copty').html('&copy; 2019 Large Pizza\'s');
+        const mainFooter = Html().create('footer').addClass('main-footer');
+        const mainFooterCopy = Html().create('small').addClass('main-footer__copty').html('&copy; 2019 Large Pizza\'s');
         mainFooter.addChild(mainFooterCopy);
         return mainFooter;
 
     }
     renderMainHeader() {
-        const mainHeader = Html('header').addClass('main-header');
-        const mainHeaderTitle = Html('h1').addClass('main-header__title').text('Large Pizza');
+        const mainHeader = Html().create('header').addClass('main-header');
+        const mainHeaderTitle = Html().create('h1').addClass('main-header__title').text('Large Pizza');
         mainHeader.addChild(mainHeaderTitle);
         return mainHeader;
     }
