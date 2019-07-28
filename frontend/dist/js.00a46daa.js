@@ -337,16 +337,123 @@ function () {
     key: "renderContentBlock",
     value: function renderContentBlock() {
       var contentBlock = (0, _Html.default)().create('section').addClass('content-block');
-      var contentBlockTitle = (0, _Html.default)().create('h3').addClass('content-block__title').text('Welcome_Large_Pizza');
+      var contentBlockTitle = (0, _Html.default)().create('h3').addClass('content-block__title').text('We have Large Pizza');
+      var greet = (0, _Html.default)().create('h1').addClass('greeting').text('look around and place your order');
+      var addvertSec = (0, _Html.default)().create('section').addClass("addSection");
+      var Img1 = (0, _Html.default)().create("img").addClass('addvertisement');
+      var Img2 = (0, _Html.default)().create("img").addClass('addvertisement');
+      var Img3 = (0, _Html.default)().create("img").addClass('addvertisement');
+      addvertSec.addChild(Img1);
+      addvertSec.addChild(Img2);
+      addvertSec.addChild(Img3);
+      contentBlock.addChild(addvertSec);
+      contentBlock.addChild(greet);
       contentBlock.addChild(contentBlockTitle);
+      return contentBlock;
+    }
+  }, {
+    key: "renderOrderSection",
+    value: function renderOrderSection() {
+      var contentBlock = (0, _Html.default)().create('section').addClass('content-block');
+      var contentBlockTitle = (0, _Html.default)().create('h3').addClass('content-block__title').text('We have Large Pizza');
+      var formBlock = (0, _Html.default)().create('form').addClass('Pizza-form').addAttribute("action", "").addAttribute("method", "POST");
+      var labelName = (0, _Html.default)().create('label');
+      var labelNametext = (0, _Html.default)().create('h2').text("Name");
+      var InputName = (0, _Html.default)().create('input').addAttribute("type", "text").addAttribute("name", "name").addAttribute("value", "ex: Your Name");
+      var labelPay = (0, _Html.default)().create('label');
+      var labeyPayText = (0, _Html.default)().create('h2').text('payment');
+      var inputPay = (0, _Html.default)().create('input').addAttribute("type", "boolean").addAttribute("name", "payment method").addAttribute("value", "Cash or Card");
+      var labelCrust = (0, _Html.default)().create('label');
+      var labelCrusttext = (0, _Html.default)().create('h2').text('Crust');
+      var crustButtonsSec = (0, _Html.default)().create('div').addClass("crust");
+      var crustButton1 = (0, _Html.default)().create('input').addAttribute("type", "radio").addAttribute("name", "crust").addAttribute("value", "Thin");
+      var crustButton2 = (0, _Html.default)().create('input').addAttribute("type", "radio").addAttribute("name", "crust").addAttribute("value", "Thick");
+      var labelSauce = (0, _Html.default)().create('label');
+      var labelSauceText = (0, _Html.default)().create('h2').text('Sauce');
+      var sauceButtonsSec = (0, _Html.default)().create('div').addClass("sauce");
+      var sauceButton1 = (0, _Html.default)().create('input').addAttribute("type", "radio").addAttribute("name", "sauce").addAttribute("value", "mild");
+      var sauceButton2 = (0, _Html.default)().create('input').addAttribute("type", "radio").addAttribute("name", "sauce").addAttribute("value", "Hot");
+      var sauceButton3 = (0, _Html.default)().create('input').addAttribute("type", "radio").addAttribute("name", "sauce").addAttribute("value", "Spicy Pepper");
+      var sauceButton4 = (0, _Html.default)().create('input').addAttribute("type", "radio").addAttribute("name", "sauce").addAttribute("value", "White");
+      var toppingSec = (0, _Html.default)().create('label');
+      var toppingSecName = (0, _Html.default)().create("h2").text('Toppings');
+      var toppingDivCheese = (0, _Html.default)().create('div').addClass('toppings-class');
+      var chesseTitle = (0, _Html.default)().create('p').text('Cheese');
+      var cheese1 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Cheddar");
+      var cheese2 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Feta");
+      var cheese3 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("non-lactose");
+      var toppingDivProtein = (0, _Html.default)().create('div').addClass('toppings-class');
+      var meatTitle = (0, _Html.default)().create('p').text('Protein');
+      var meat1 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", " ").addAttribute('value', "").text("Italian Sausage");
+      var meat2 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Pepperoni");
+      var meat3 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Ham");
+      var meat4 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Bacon");
+      var meat5 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Black Bean");
+      var toppingDivVeggie = (0, _Html.default)().create('div').addClass('toppings-class');
+      var VeggieTitle = (0, _Html.default)().create('p').text('Veggie');
+      var Veggie1 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Mushrooms");
+      var Veggie2 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Roasted Spinach");
+      var Veggie3 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Red Onions");
+      var Veggie4 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Mediterranean Black Olives");
+      var Veggie5 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Green Bell Peppers");
+      var Veggie6 = (0, _Html.default)().create('input').addAttribute('type', "checkbox").addAttribute("name", "").addAttribute('value', "").text("Pineapple");
+      var submitButtonDiv = (0, _Html.default)().create('div').addClass('submit-buttons');
+      var addAnotherPizzaButton = (0, _Html.default)().create('button').addAttribute('type', "submit").text('Cofirm your order');
+      var confirmORderButton = (0, _Html.default)().create('button').addAttribute('type', "submit").text('Add another Pizza');
+      submitButtonDiv.addChild(addAnotherPizzaButton);
+      submitButtonDiv.addChild(confirmORderButton);
+      toppingDivVeggie.addChild(Veggie1);
+      toppingDivVeggie.addChild(Veggie2);
+      toppingDivVeggie.addChild(Veggie3);
+      toppingDivVeggie.addChild(Veggie4);
+      toppingDivVeggie.addChild(Veggie5);
+      toppingDivVeggie.addChild(Veggie6);
+      toppingDivVeggie.addChild(VeggieTitle);
+      toppingDivProtein.addChild(meat1);
+      toppingDivProtein.addChild(meat2);
+      toppingDivProtein.addChild(meat3);
+      toppingDivProtein.addChild(meat4);
+      toppingDivProtein.addChild(meat5);
+      toppingDivProtein.addChild(meatTitle);
+      toppingDivCheese.addChild(cheese1);
+      toppingDivCheese.addChild(cheese2);
+      toppingDivCheese.addChild(cheese3);
+      toppingDivCheese.addChild(chesseTitle);
+      toppingSec.addChild(toppingDivCheese);
+      toppingSec.addChild(toppingDivProtein);
+      toppingSec.addChild(toppingDivVeggie);
+      toppingSec.addChild(toppingSecName);
+      sauceButtonsSec.addChild(sauceButton1);
+      sauceButtonsSec.addChild(sauceButton2);
+      sauceButtonsSec.addChild(sauceButton3);
+      sauceButtonsSec.addChild(sauceButton4);
+      labelSauce.addChild(sauceButtonsSec);
+      labelSauce.addChild(labelSauceText);
+      crustButtonsSec.addChild(crustButton1);
+      crustButtonsSec.addChild(crustButton2);
+      labelCrust.addChild(crustButtonsSec);
+      labelCrust.addChild(labelCrusttext);
+      labelPay.addChild(inputPay);
+      labelPay.addChild(labeyPayText);
+      labelName.addChild(InputName);
+      labelName.addChild(labelNametext);
+      formBlock.addChild(labelName);
+      formBlock.addChild(labelPay);
+      formBlock.addChild(labelCrust);
+      formBlock.addChild(labelSauce);
+      formBlock.addChild(toppingSec);
+      formBlock.addChild(submitButtonDiv);
+      contentBlock.addChild(contentBlockTitle);
+      contentBlock.addChild(formBlock);
       return contentBlock;
     }
   }, {
     key: "renderMainContent",
     value: function renderMainContent() {
       var mainContent = (0, _Html.default)().create('main').addClass("main-content");
-      var containerDiv = (0, _Html.default)().create('div').addClass('container');
-      var contentBlock = this.renderContentBlock();
+      var containerDiv = (0, _Html.default)().create('div').addClass('container'); // const contentBlock = this.renderContentBlock();
+
+      var contentBlock = this.renderOrderSection();
       containerDiv.addChild(contentBlock);
       mainContent.addChild(containerDiv);
       return mainContent;
@@ -363,20 +470,20 @@ function () {
     key: "renderMainHeader",
     value: function renderMainHeader() {
       var mainHeader = (0, _Html.default)().create('header').addClass('main-header');
-      var mainHeaderTitle = (0, _Html.default)().create('h1').addClass('main-header__title').text('Large Pizza');
+      var mainHeaderTitle = (0, _Html.default)().create('h1').addClass('main-header__title').text('Welcome to Large Pizza');
       mainHeader.addChild(mainHeaderTitle);
       return mainHeader;
     }
   }, {
-    key: "renderPageHome",
-    value: function renderPageHome() {
+    key: "renderHomePage",
+    value: function renderHomePage() {
       var app = this.getAppContext();
-      var wrapperDiv = this.getWrapperDiv(); // const mainHeader = this.renderMainHeader();
-      // const mainContent = this.renderMainContent();
-
-      var mainFooter = this.renderMainFooter(); // wrapperDiv.addChild(mainHeader);
-      // wrapperDiv.addChild(mainContent);
-
+      var wrapperDiv = this.getWrapperDiv();
+      var mainHeader = this.renderMainHeader();
+      var mainContent = this.renderMainContent();
+      var mainFooter = this.renderMainFooter();
+      wrapperDiv.addChild(mainHeader);
+      wrapperDiv.addChild(mainContent);
       wrapperDiv.addChild(mainFooter);
       app.addChild(wrapperDiv);
     }
@@ -397,7 +504,7 @@ var _Components = _interopRequireDefault(require("./utils/Components/Components"
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function main() {
-  (0, _Components.default)().renderPageHome();
+  (0, _Components.default)().renderHomePage();
 }
 },{"./utils/Components/Components":"js/utils/Components/Components.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
@@ -435,7 +542,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62036" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56085" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
