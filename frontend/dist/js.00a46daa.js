@@ -117,9 +117,274 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/utils/Components/Components.js":[function(require,module,exports) {
+})({"js/utils/Html/Html.js":[function(require,module,exports) {
+"use strict";
 
-},{}],"js/main.js":[function(require,module,exports) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _default() {
+  return new Html();
+}
+
+var Html =
+/*#__PURE__*/
+function () {
+  function Html() {
+    _classCallCheck(this, Html);
+  }
+
+  _createClass(Html, [{
+    key: "addAttribute",
+    value: function addAttribute(attributeToSet, attributeValue) {
+      this.element.setAttribute(attributeToSet, attributeValue);
+      return this;
+    }
+  }, {
+    key: "addChild",
+    value: function addChild(elementToAdd) {
+      if (elementToAdd.render() instanceof HTMLUnknownElement) {
+        throw new Error("Invalid HTML tag");
+      }
+
+      this.element.append(elementToAdd.render());
+      return this;
+    }
+  }, {
+    key: "addClass",
+    value: function addClass(classToAdd) {
+      if (this.element.classList.contains(classToAdd)) {
+        throw new Error("duplicate class error");
+      }
+
+      this.element.classList.add(classToAdd);
+      console.log(classToAdd);
+      return this;
+    }
+  }, {
+    key: "click",
+    value: function click(callback) {
+      this.element.addEventListener("click", callback);
+      return this;
+    }
+  }, {
+    key: "create",
+    value: function create(elementType) {
+      if (!elementType) {
+        throw new Error("Must pass a Html element");
+      }
+
+      this.element = document.createElement(elementType);
+
+      if (this.element instanceof HTMLUnknownElement) {
+        throw new Error("invalid html element");
+      }
+
+      return this;
+    } // kinda fuzzy on what all this is doing
+
+  }, {
+    key: "html",
+    value: function html(contentToAdd) {
+      if (contentToAdd === undefined) {
+        return this.element.innerHTML;
+      }
+
+      this.element.innerHtml = contentToAdd;
+      return this;
+    }
+  }, {
+    key: "_isClassQuery",
+    value: function _isClassQuery(query) {
+      return query.startsWith(".");
+    }
+  }, {
+    key: "_isIdQuery",
+    value: function _isIdQuery(query) {
+      return query.startsWith("#");
+    } // not fully understanding what this is doing
+
+  }, {
+    key: "render",
+    value: function render() {
+      return this.element;
+    } // this appears to just blank out the inner information, not sure how this is replacing 
+
+  }, {
+    key: "replace",
+    value: function replace(element) {
+      this.element.innerHTML = '';
+      this.addChild(element);
+      return this;
+    }
+  }, {
+    key: "select",
+    value: function select(query) {
+      var selection = document.querySelectorAll(query);
+
+      if (selection.length === 1) {
+        this.element = selection[0];
+      } else {
+        this.element = selection;
+      }
+
+      return this;
+    }
+  }, {
+    key: "text",
+    value: function text(textToAdd) {
+      if (textToAdd === undefined) {
+        return this.element.textContent;
+      }
+
+      this.element.textContent = textToAdd;
+      return this;
+    }
+  }]);
+
+  return Html;
+}();
+},{}],"js/utils/Api/Api.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _default() {
+  return new Api();
+}
+
+var Api =
+/*#__PURE__*/
+function () {
+  function Api() {
+    _classCallCheck(this, Api);
+  }
+
+  _createClass(Api, [{
+    key: "getRequest",
+    value: function getRequest(location, callback) {
+      fetch(location).then(function (response) {
+        return response.json();
+      }).then(callback).catch(function (err) {
+        return console.log(err);
+      });
+    }
+  }]);
+
+  return Api;
+}();
+},{}],"js/utils/Components/Components.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Html = _interopRequireDefault(require("../Html/Html"));
+
+var _Api = _interopRequireDefault(require("../Api/Api"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var _default = function _default() {
+  return new Components();
+};
+
+exports.default = _default;
+
+var Components =
+/*#__PURE__*/
+function () {
+  function Components() {
+    _classCallCheck(this, Components);
+  }
+
+  _createClass(Components, [{
+    key: "getAppContext",
+    value: function getAppContext() {
+      return (0, _Html.default)().select("#app");
+    }
+  }, {
+    key: "getWrapperDiv",
+    value: function getWrapperDiv() {
+      return (0, _Html.default)().create("div").addClass("wrapper");
+    }
+  }, {
+    key: "renderContentBlock",
+    value: function renderContentBlock() {
+      var contentBlock = (0, _Html.default)().create('section').addClass('content-block');
+      var contentBlockTitle = (0, _Html.default)().create('h3').addClass('content-block__title').text('Welcome_Large_Pizza');
+      contentBlock.addChild(contentBlockTitle);
+      return contentBlock;
+    }
+  }, {
+    key: "renderMainContent",
+    value: function renderMainContent() {
+      var mainContent = (0, _Html.default)().create('main').addClass("main-content");
+      var containerDiv = (0, _Html.default)().create('div').addClass('container');
+      var contentBlock = this.renderContentBlock();
+      containerDiv.addChild(contentBlock);
+      mainContent.addChild(containerDiv);
+      return mainContent;
+    }
+  }, {
+    key: "renderMainFooter",
+    value: function renderMainFooter() {
+      var mainFooter = (0, _Html.default)().create('footer').addClass('main-footer');
+      var mainFooterCopy = (0, _Html.default)().create('small').addClass('main-footer__copty').html('&copy; 2019 Large Pizza\'s');
+      mainFooter.addChild(mainFooterCopy);
+      return mainFooter;
+    }
+  }, {
+    key: "renderMainHeader",
+    value: function renderMainHeader() {
+      var mainHeader = (0, _Html.default)().create('header').addClass('main-header');
+      var mainHeaderTitle = (0, _Html.default)().create('h1').addClass('main-header__title').text('Large Pizza');
+      mainHeader.addChild(mainHeaderTitle);
+      return mainHeader;
+    }
+  }, {
+    key: "renderPageHome",
+    value: function renderPageHome() {
+      var app = this.getAppContext();
+      var wrapperDiv = this.getWrapperDiv(); // const mainHeader = this.renderMainHeader();
+      // const mainContent = this.renderMainContent();
+
+      var mainFooter = this.renderMainFooter(); // wrapperDiv.addChild(mainHeader);
+      // wrapperDiv.addChild(mainContent);
+
+      wrapperDiv.addChild(mainFooter);
+      app.addChild(wrapperDiv);
+    }
+  }]);
+
+  return Components;
+}();
+},{"../Html/Html":"js/utils/Html/Html.js","../Api/Api":"js/utils/Api/Api.js"}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -132,9 +397,7 @@ var _Components = _interopRequireDefault(require("./utils/Components/Components"
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function main() {
-  _Components.default.renderWholePage();
-
-  _Components.default.generateHomePage();
+  (0, _Components.default)().renderPageHome();
 }
 },{"./utils/Components/Components":"js/utils/Components/Components.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
@@ -144,7 +407,7 @@ var _main = _interopRequireDefault(require("./main"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _main.default)();
-},{"./main":"js/main.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./main":"js/main.js"}],"../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -172,7 +435,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58165" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62036" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -347,5 +610,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
+},{}]},{},["../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
 //# sourceMappingURL=/js.00a46daa.js.map

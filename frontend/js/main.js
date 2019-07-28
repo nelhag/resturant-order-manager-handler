@@ -1,5 +1,4 @@
 import Components from './utils/Components/Components'
-export default function main(){
-    Components.renderWholePage();
-    Components.generateHomePage();
+export default function main() {
+    Components().renderPageHome();
 }

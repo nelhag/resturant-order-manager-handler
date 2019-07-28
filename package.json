@@ -4,5 +4,11 @@
   },
   "dependencies": {
     "parcel-bundler": "^1.12.3"
-  }
+  },
+  "name": "resturant-order-manager-handler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nelhag/resturant-order-manager-handler.git",
+  "author": "Scott <sbsmith1101@gmail.com>",
+  "license": "MIT"
 }
