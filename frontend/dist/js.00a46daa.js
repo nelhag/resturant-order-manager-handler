@@ -511,9 +511,13 @@ function () {
       var contentBlockList = (0, _Html.default)().create('ul').addClass('content-block__list');
       (0, _Api.default)().getRequest('http://localhost:8080/api/orders', function (Orders) {
         Orders.forEach(function (order) {
-          var contentBlockListItem = (0, _Html.default)().create('li').addClass('content-block__list-item').addChild((0, _Html.default)().create('a').addAttribute('href', "/orders/".concat(order.id)).text(order.name));
+          var contentBlockListItem = (0, _Html.default)().create('h3').text("name on Order");
+          contentBlockListItem.addChild((0, _Html.default)().create('li').addClass('content-block__list-item').addChild((0, _Html.default)().create('a').addAttribute('href', "/orders/".concat(order.id)).text(order.name)));
+          contentBlockListItem.addChild((0, _Html.default)().create('h4').text("Payment Method"));
           contentBlockListItem.addChild((0, _Html.default)().create('p').text(order.paymentMethod));
+          contentBlockListItem.addChild((0, _Html.default)().create('h4').text("Order Time"));
           contentBlockListItem.addChild((0, _Html.default)().create('p').text(order.orderTime));
+          contentBlockListItem.addChild((0, _Html.default)().create('h4').text("________"));
           contentBlockList.addChild(contentBlockListItem);
         });
       });
@@ -533,7 +537,9 @@ function () {
           var contentBlockListItem = (0, _Html.default)().create('li').addClass('content-block__list-item').addChild((0, _Html.default)().create('a').addAttribute('href', "/pizzas/".concat(pizza.id)).text(pizza.itemName));
           contentBlockListItem.addChild((0, _Html.default)().create('h3').text("comments"));
           contentBlockListItem.addChild((0, _Html.default)().create('p').text(pizza.comments));
+          contentBlockListItem.addChild((0, _Html.default)().create('h3').text("crust"));
           contentBlockListItem.addChild((0, _Html.default)().create('p').text(pizza.crust));
+          contentBlockListItem.addChild((0, _Html.default)().create('h3').text("sauce"));
           contentBlockListItem.addChild((0, _Html.default)().create('p').text(pizza.sauce));
           contentBlockList.addChild(contentBlockListItem);
         });
@@ -544,14 +550,72 @@ function () {
       return contentBlock;
     }
   }, {
+    key: "renderMainNav",
+    value: function renderMainNav() {
+      var _this = this;
+
+      var nav = (0, _Html.default)().create("nav").addClass("nav");
+      var navList = (0, _Html.default)().create("ul").addClass("nav__list");
+      var navListItemOne = (0, _Html.default)().create("li").addClass("nav__list-item").addChild((0, _Html.default)().create("a").addAttribute("href", "#").text("Home").click(function (event) {
+        event.preventDefault();
+
+        _this.replaceHomeSection();
+      }));
+      var navListItemTwo = (0, _Html.default)().create("li").addClass("nav__list-item").addChild((0, _Html.default)().create("a").addAttribute("href", "#").text("add Item").click(function (event) {
+        event.preventDefault();
+
+        _this.replaceOrderSection();
+      }));
+      var navListItemThree = (0, _Html.default)().create("li").addClass("nav__list-item").addChild((0, _Html.default)().create("a").addAttribute("href", "#").text("Order List").click(function (event) {
+        event.preventDefault();
+
+        _this.replaceOrderList();
+      }));
+      var navListItemFour = (0, _Html.default)().create("li").addClass("nav__list-item").addChild((0, _Html.default)().create("a").addAttribute("href", "#").text("Pizza List").click(function (event) {
+        event.preventDefault();
+
+        _this.replacePizzaList();
+      }));
+      navList.addChild(navListItemOne);
+      navList.addChild(navListItemTwo);
+      navList.addChild(navListItemThree);
+      navList.addChild(navListItemFour);
+      nav.addChild(navList);
+      return nav;
+    }
+  }, {
+    key: "replaceHomeSection",
+    value: function replaceHomeSection() {
+      var currentMainContentContainer = this.getWrapperDiv().select('.main-content').select('.container');
+      currentMainContentContainer.replace(this.renderContentBlock());
+    }
+  }, {
+    key: "replaceOrderSection",
+    value: function replaceOrderSection() {
+      var currentMainContentContainer = this.getWrapperDiv().select('.main-content').select('.container');
+      currentMainContentContainer.replace(this.renderOrderSection());
+    }
+  }, {
+    key: "replaceOrderList",
+    value: function replaceOrderList() {
+      var currentMainContentContainer = this.getWrapperDiv().select('.main-content').select('.container');
+      currentMainContentContainer.replace(this.renderOrderList());
+    }
+  }, {
+    key: "replacePizzaList",
+    value: function replacePizzaList() {
+      var currentMainContentContainer = this.getWrapperDiv().select('.main-content').select('.container');
+      currentMainContentContainer.replace(this.renderPizzaList());
+    }
+  }, {
     key: "renderMainContent",
     value: function renderMainContent() {
       var mainContent = (0, _Html.default)().create('main').addClass("main-content");
-      var containerDiv = (0, _Html.default)().create('div').addClass('container'); // const contentBlock = this.renderContentBlock();
-      // const contentBlock = this.renderOrderSection();
+      var containerDiv = (0, _Html.default)().create('div').addClass('container');
+      var contentBlock = this.renderContentBlock(); // const contentBlock = this.renderOrderSection();
       // const contentBlock = this.renderOrderList();
+      // const contentBlock = this.renderPizzaList()
 
-      var contentBlock = this.renderPizzaList();
       containerDiv.addChild(contentBlock);
       mainContent.addChild(containerDiv);
       return mainContent;
@@ -569,6 +633,8 @@ function () {
     value: function renderMainHeader() {
       var mainHeader = (0, _Html.default)().create('header').addClass('main-header');
       var mainHeaderTitle = (0, _Html.default)().create('h1').addClass('main-header__title').text('Welcome to Large Pizza');
+      var nav = this.renderMainNav();
+      mainHeader.addChild(nav);
       mainHeader.addChild(mainHeaderTitle);
       return mainHeader;
     }
@@ -640,7 +706,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64680" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53761" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -193,20 +193,30 @@ class Components {
         Api().getRequest('http://localhost:8080/api/orders', (Orders) => {
             Orders.forEach((order) => {
               
-                const contentBlockListItem =
+                const contentBlockListItem=
+                    Html().create('h3').text("name on Order")
+
+                 contentBlockListItem.addChild(
                 Html()
                     .create('li')
                     .addClass('content-block__list-item')
                     .addChild(Html()
                         .create('a')
                         .addAttribute('href', `/orders/${order.id}`)
-                        .text(order.name));
+                        .text(order.name)))
+                        
+                        contentBlockListItem.addChild(
+                            Html().create('h4').text("Payment Method"))
                 contentBlockListItem.addChild(
                         Html().create('p').text(order.paymentMethod)
                 )
                 contentBlockListItem.addChild(
+                    Html().create('h4').text("Order Time"))
+                contentBlockListItem.addChild(
                     Html().create('p').text(order.orderTime)
             )
+            contentBlockListItem.addChild(
+                Html().create('h4').text("________"))
            
                     
                 contentBlockList.addChild(contentBlockListItem);
@@ -242,8 +252,12 @@ class Components {
                     Html().create('p').text(pizza.comments)
             )
             contentBlockListItem.addChild(
+                Html().create('h3').text("crust"))
+            contentBlockListItem.addChild(
                 Html().create('p').text(pizza.crust)
         )
+        contentBlockListItem.addChild(
+            Html().create('h3').text("sauce"))
         contentBlockListItem.addChild(
             Html().create('p').text(pizza.sauce)
     )
@@ -259,14 +273,87 @@ class Components {
         return contentBlock;
     }
 
+    renderMainNav() {
+        const nav = Html().create("nav").addClass("nav");
+        const navList = Html().create("ul").addClass("nav__list");
+        const navListItemOne = Html().create("li")
+            .addClass("nav__list-item")
+            .addChild(
+                Html().create("a")
+                    .addAttribute("href", "#")
+                    .text("Home")
+                    .click((event) => {
+                        event.preventDefault()
+                        this.replaceHomeSection()
+                    })
+            );
+        const navListItemTwo = Html().create("li")
+            .addClass("nav__list-item")
+            .addChild(
+                Html().create("a")
+                    .addAttribute("href", "#")
+                    .text("add Item")
+                    .click((event) => {
+                        event.preventDefault()
+                        this.replaceOrderSection()
+                    })
+            );
+        const navListItemThree = Html().create("li")
+            .addClass("nav__list-item")
+            .addChild(
+                Html().create("a")
+                    .addAttribute("href", "#")
+                    .text("Order List")
+                    .click((event) => {
+                        event.preventDefault()
+                        this.replaceOrderList()
+                    })
+            );
+        const navListItemFour = Html().create("li")
+            .addClass("nav__list-item")
+            .addChild(
+                Html().create("a")
+                    .addAttribute("href", "#")
+                    .text("Pizza List")
+                    .click((event) => {
+                        event.preventDefault()
+                        this.replacePizzaList()
+                    })
+            );
+           
+        navList.addChild(navListItemOne);
+        navList.addChild(navListItemTwo);
+        navList.addChild(navListItemThree);
+        navList.addChild(navListItemFour);
+        nav.addChild(navList);
+        return nav;
+    }
+    replaceHomeSection() {
+        const currentMainContentContainer = this.getWrapperDiv().select('.main-content').select('.container')
+        currentMainContentContainer.replace(this.renderContentBlock())
+    }
+    replaceOrderSection() {
+        const currentMainContentContainer = this.getWrapperDiv().select('.main-content').select('.container')
+        currentMainContentContainer.replace(this.renderOrderSection())
+    }
+
+    replaceOrderList() {
+        const currentMainContentContainer = this.getWrapperDiv().select('.main-content').select('.container')
+        currentMainContentContainer.replace(this.renderOrderList())
+    }
+
+    replacePizzaList() {
+        const currentMainContentContainer = this.getWrapperDiv().select('.main-content').select('.container')
+        currentMainContentContainer.replace(this.renderPizzaList())
+    }
 
     renderMainContent() {
         const mainContent = Html().create('main').addClass("main-content");
         const containerDiv = Html().create('div').addClass('container');
-        // const contentBlock = this.renderContentBlock();
+        const contentBlock = this.renderContentBlock();
         // const contentBlock = this.renderOrderSection();
         // const contentBlock = this.renderOrderList();
-        const contentBlock = this.renderPizzaList()
+        // const contentBlock = this.renderPizzaList()
         containerDiv.addChild(contentBlock);
         mainContent.addChild(containerDiv);
         return mainContent;
@@ -282,6 +369,8 @@ class Components {
     renderMainHeader() {
         const mainHeader = Html().create('header').addClass('main-header');
         const mainHeaderTitle = Html().create('h1').addClass('main-header__title').text('Welcome to Large Pizza');
+        const nav = this.renderMainNav();
+        mainHeader.addChild(nav)
         mainHeader.addChild(mainHeaderTitle);
         return mainHeader;
     }
