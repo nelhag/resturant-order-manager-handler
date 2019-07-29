@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color:initial;
+
+ }
+.toppings-class{
+    display: flexbox;
+    flex-direction: row;
+}
+body{
+    background-color:rgb(93, 42, 42);
+color:rgb(167, 144, 86);
+/* background-image: url('./images/pizza.png'); */
+}
+.container {
+    height: 100vh;
+  }
+.nav__list{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  float: right;
+  padding: 8px;
+
+}
+.nav__list-item{
+  padding: 8px;
+}
+
+  .content-block__list {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 175px 175px 175px;
+    justify-content: space-around;
+    margin-top: 2rem;
+    list-style: none;
+  }
+  .content-block__title {
+    font-size: 3rem;
+    text-align: center;
+  }
+ .main-header{
+     display: flexbox;
+     flex-direction: column;
+     text-align: center;
+
+ }
+ 
+
+/*# sourceMappingURL=/frontend.9ad09f98.css.map */

@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "parcel-bundler": "^1.12.3"
+  },
+  "name": "resturant-order-manager-handler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nelhag/resturant-order-manager-handler.git",
+  "author": "Scott <sbsmith1101@gmail.com>",
+  "license": "MIT"
+}

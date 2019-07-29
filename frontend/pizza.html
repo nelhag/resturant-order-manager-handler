@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select Pizza</title>
+    <link rel="stylesheet" type="text/css" href="./index.css"/>
+</head>
+<body>
+        <form class="Pizza-form" action="" method="POST">
+            <label>
+                <h2>Name:</h2>
+                <input type="text" name="name" value="ex: Your Name" />
+            </label>
+            <label>
+                <input
+                    type="boolean"
+                    name="payment method"
+                    value="Cash or Card"
+                />
+            </label>
+            <label>
+                <h2>Crust:</h2>
+                           
+                    <div class=crust>
+                        <input  type="radio"   name= "crust" value ="Thin">Thin<br>
+                        <input  type="radio"   name= "crust" value ="Thin">Thick<br>
+                    </div>
+            </label>
+                <label>
+
+                <h2>Sauce:</h2>
+                    <div class=sauce>
+                            <input  type="radio"   name= "sauce" value ="Spicy">Spicy<br>
+                            <input  type="radio"   name= "sauce" value ="Mild">Mild<br>
+                            <input  type="radio"   name= "sauce" value ="White">White<br>
+                        </div>
+               
+            </label>
+           
+            <label>
+           <h2>Toppings</h2>
+           <div class="toppings-class">
+           <p>Cheese:</p>
+               <input type="checkbox" name="cheese" value=""> Cheddar<br>
+               <input type="checkbox" name="cheese" value=""> Swiss<br>
+            </div>
+            <div class="toppings-class">
+                <p>Meat:</p>
+                <input type="checkbox" name="Protein" value=""> Beef<br>
+                <input type="checkbox" name="Protein" value=""> Italian Sausage<br> 
+                <input type="checkbox" name="Protein" value=""> Grilled Chicken<br>  
+                <input type="checkbox" name="Protein" value=""> Peproni<br> 
+                <input type="checkbox" name="Protein" value="">  Meat Ball<br>
+                
+            </div>
+        </div>
+        <div class="toppings-class">
+            <p>Veggie:</p>
+            <input type="checkbox" name="Veggie" value=""> Mushrooms<br>
+            <input type="checkbox" name="Veggie" value="">Roasted Spinach<br>
+            <input type="checkbox" name="Veggie" value=""> Red Onions<br>
+            <input type="checkbox" name="Veggie" value=""> Mediterranean Black Olives<br>
+            <input type="checkbox" name="Veggie" value=""> Green Bell Peppers<br>
+            <input type="checkbox" name="Veggie" value=""> Pineapple<br>
+        </div>
+        
+        <div class="submit-buttons">
+            <button type="submit">Confirm your order</button>
+            <button type="submit">Add another pizza</button>
+        </div>
+    </label>
+        </form>
+</body>
+</html>
