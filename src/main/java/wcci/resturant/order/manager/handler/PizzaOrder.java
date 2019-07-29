@@ -32,7 +32,7 @@ public class PizzaOrder {
 
 	public PizzaOrder(String name, boolean paymentMethod, String orderTime) {
 		this.name = name;
-		this.paymentMethod = true;
+		this.paymentMethod = paymentMethod;
 		this.orderTime = orderTime;
 		this.pizzas=new ArrayList<>();
 		this.toppingTotal = toppingCounter();
