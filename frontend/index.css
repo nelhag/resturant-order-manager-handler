@@ -24,6 +24,18 @@ color:rgb(167, 144, 86);
 .container {
     height: 100vh;
   }
+.nav__list{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  float: right;
+  padding: 8px;
+
+}
+.nav__list-item{
+  padding: 8px;
+}
+
   .content-block__list {
     align-items: center;
     display: grid;
