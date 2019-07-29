@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 
 @Entity
@@ -24,6 +27,7 @@ public class Pizza {
 	private Collection<Topping> toppings;
 	
 	@ManyToOne
+	@JsonIgnore
 	private PizzaOrder pizzaorder;
 	
 	private String comments;

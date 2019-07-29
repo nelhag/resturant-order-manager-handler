@@ -1,6 +1,7 @@
 package wcci.resturant.order.manager.handler;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +17,13 @@ public class PizzaOrderController {
 	private PizzaOrderRepository pizzaOrderRepo;
 	
 	@GetMapping("/orders")
+	@CrossOrigin
 	public Iterable<PizzaOrder> sendOrders(){
 		return pizzaOrderRepo.findAll();
 	}
 	
 	@GetMapping("/orders/{id}")
+	@CrossOrigin
 	public PizzaOrder sendOrder(@PathVariable Long id) {
 		return pizzaOrderRepo.findById(id).get();	
 	}
