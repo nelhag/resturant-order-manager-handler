@@ -509,17 +509,32 @@ function () {
       var contentBlock = (0, _Html.default)().create('section').addClass('content-block');
       var contentBlockTitle = (0, _Html.default)().create('h3').addClass('content-block__title').text('Order List');
       var contentBlockList = (0, _Html.default)().create('ul').addClass('content-block__list');
+      (0, _Api.default)().getRequest('http://localhost:8080/api/orders', function (Orders) {
+        Orders.forEach(function (order) {
+          var contentBlockListItem = (0, _Html.default)().create('li').addClass('content-block__list-item').addChild((0, _Html.default)().create('a').addAttribute('href', "/orders/".concat(order.id)).text(order.name));
+          contentBlockListItem.addChild((0, _Html.default)().create('p').text(order.paymentMethod));
+          contentBlockListItem.addChild((0, _Html.default)().create('p').text(order.orderTime));
+          contentBlockList.addChild(contentBlockListItem);
+        });
+      });
+      contentBlock.addChild(contentBlockTitle);
+      contentBlock.addChild(contentBlockList);
+      console.log("hello problem");
+      return contentBlock;
+    }
+  }, {
+    key: "renderPizzaList",
+    value: function renderPizzaList() {
+      var contentBlock = (0, _Html.default)().create('section').addClass('content-block');
+      var contentBlockTitle = (0, _Html.default)().create('h3').addClass('content-block__title').text('Pizza List');
+      var contentBlockList = (0, _Html.default)().create('ul').addClass('content-block__list');
       (0, _Api.default)().getRequest('http://localhost:8080/api/pizzas', function (Pizzas) {
         Pizzas.forEach(function (pizza) {
-          var pizzaOrderItem = pizza.id;
-          var contentBlockListItem = (0, _Html.default)().create('p').text(pizzaOrderItem); // Html()
-          //     .create('li')
-          //     .addClass('content-block__list-item')
-          //     .addChild(Html()
-          //         .create('a')
-          //         .addAttribute('href', `/orders/${pizzaOrder.id}`)
-          //         .text(pizzaOrder.name));
-
+          var contentBlockListItem = (0, _Html.default)().create('li').addClass('content-block__list-item').addChild((0, _Html.default)().create('a').addAttribute('href', "/pizzas/".concat(pizza.id)).text(pizza.itemName));
+          contentBlockListItem.addChild((0, _Html.default)().create('h3').text("comments"));
+          contentBlockListItem.addChild((0, _Html.default)().create('p').text(pizza.comments));
+          contentBlockListItem.addChild((0, _Html.default)().create('p').text(pizza.crust));
+          contentBlockListItem.addChild((0, _Html.default)().create('p').text(pizza.sauce));
           contentBlockList.addChild(contentBlockListItem);
         });
       });
@@ -534,8 +549,9 @@ function () {
       var mainContent = (0, _Html.default)().create('main').addClass("main-content");
       var containerDiv = (0, _Html.default)().create('div').addClass('container'); // const contentBlock = this.renderContentBlock();
       // const contentBlock = this.renderOrderSection();
+      // const contentBlock = this.renderOrderList();
 
-      var contentBlock = this.renderOrderList();
+      var contentBlock = this.renderPizzaList();
       containerDiv.addChild(contentBlock);
       mainContent.addChild(containerDiv);
       return mainContent;
@@ -596,7 +612,7 @@ var _main = _interopRequireDefault(require("./main"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _main.default)();
-},{"./main":"js/main.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./main":"js/main.js"}],"../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -624,7 +640,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50185" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64680" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -799,5 +815,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
+},{}]},{},["../../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
 //# sourceMappingURL=/js.00a46daa.js.map

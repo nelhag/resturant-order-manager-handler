@@ -190,20 +190,65 @@ class Components {
 
         const contentBlockList = Html().create('ul').addClass('content-block__list');
 
+        Api().getRequest('http://localhost:8080/api/orders', (Orders) => {
+            Orders.forEach((order) => {
+              
+                const contentBlockListItem =
+                Html()
+                    .create('li')
+                    .addClass('content-block__list-item')
+                    .addChild(Html()
+                        .create('a')
+                        .addAttribute('href', `/orders/${order.id}`)
+                        .text(order.name));
+                contentBlockListItem.addChild(
+                        Html().create('p').text(order.paymentMethod)
+                )
+                contentBlockListItem.addChild(
+                    Html().create('p').text(order.orderTime)
+            )
+           
+                    
+                contentBlockList.addChild(contentBlockListItem);
+
+            });
+        });
+        contentBlock.addChild(contentBlockTitle);
+        contentBlock.addChild(contentBlockList);
+        console.log("hello problem")
+        return contentBlock;
+    }
+    renderPizzaList() {
+        const contentBlock = Html().create('section').addClass('content-block');
+        const contentBlockTitle = Html().create('h3').addClass('content-block__title').text('Pizza List');
+
+        const contentBlockList = Html().create('ul').addClass('content-block__list');
+
         Api().getRequest('http://localhost:8080/api/pizzas', (Pizzas) => {
             Pizzas.forEach((pizza) => {
-                const pizzaOrderItem = pizza.id
-
-
-                const contentBlockListItem = Html().create('p').text(pizzaOrderItem)
-
-                // Html()
-                //     .create('li')
-                //     .addClass('content-block__list-item')
-                //     .addChild(Html()
-                //         .create('a')
-                //         .addAttribute('href', `/orders/${pizzaOrder.id}`)
-                //         .text(pizzaOrder.name));
+              
+                const contentBlockListItem =
+                Html()
+                    .create('li')
+                    .addClass('content-block__list-item')
+                    .addChild(Html()
+                        .create('a')
+                        .addAttribute('href', `/pizzas/${pizza.id}`)
+                        .text(pizza.itemName));
+                
+                contentBlockListItem.addChild(
+                    Html().create('h3').text("comments"))
+                    contentBlockListItem.addChild(
+                    Html().create('p').text(pizza.comments)
+            )
+            contentBlockListItem.addChild(
+                Html().create('p').text(pizza.crust)
+        )
+        contentBlockListItem.addChild(
+            Html().create('p').text(pizza.sauce)
+    )
+    
+                    
                 contentBlockList.addChild(contentBlockListItem);
 
             });
@@ -214,12 +259,14 @@ class Components {
         return contentBlock;
     }
 
+
     renderMainContent() {
         const mainContent = Html().create('main').addClass("main-content");
         const containerDiv = Html().create('div').addClass('container');
         // const contentBlock = this.renderContentBlock();
         // const contentBlock = this.renderOrderSection();
-        const contentBlock = this.renderOrderList();
+        // const contentBlock = this.renderOrderList();
+        const contentBlock = this.renderPizzaList()
         containerDiv.addChild(contentBlock);
         mainContent.addChild(containerDiv);
         return mainContent;
