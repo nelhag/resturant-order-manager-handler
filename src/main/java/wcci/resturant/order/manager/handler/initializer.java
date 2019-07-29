@@ -19,14 +19,14 @@ public void run(String... args) throws Exception{
 	pizzaOrderRepo.save(order1);
 	PizzaOrder order2=new PizzaOrder("John",false,"7/25/19 11:30pm");
 	pizzaOrderRepo.save(order2);
-//	PizzaOrder order3=new PizzaOrder("Sarah",true,"7/25/19 12:30pm");
-//	pizzaOrderRepo.save(order3);
-//	PizzaOrder order4=new PizzaOrder("Adam",true,"7/25/19 12:35pm");
-//	pizzaOrderRepo.save(order4);
-//	PizzaOrder order5=new PizzaOrder("Jessica",false,"7/25/19 12:45pm");
-//	pizzaOrderRepo.save(order5);
-//	PizzaOrder order6=new PizzaOrder("Sarah",true,"7/25/19 1:30pm");
-//	pizzaOrderRepo.save(order6);
+	PizzaOrder order3=new PizzaOrder("Sarah",true,"7/25/19 12:30pm");
+	pizzaOrderRepo.save(order3);
+	PizzaOrder order4=new PizzaOrder("Adam",true,"7/25/19 12:35pm");
+	pizzaOrderRepo.save(order4);
+	PizzaOrder order5=new PizzaOrder("Jessica",false,"7/25/19 12:45pm");
+	pizzaOrderRepo.save(order5);
+	PizzaOrder order6=new PizzaOrder("Sarah",true,"7/25/19 1:30pm");
+	pizzaOrderRepo.save(order6);
 	
 	Pizza pizza1= new Pizza("pizza1","add bufflo sauce","white","thin",order1);
 	pizzaRepo.save(pizza1);
